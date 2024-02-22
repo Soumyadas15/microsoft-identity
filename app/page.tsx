@@ -2,21 +2,34 @@
 
 import Image from "next/image";
 import { useUser } from "@auth0/nextjs-auth0/client";
+import { Button } from "./components/Button";
+import { Profile } from "./components/Profile";
+import { Box } from "./components/Box";
 export default function Home() {
   const { user, error, isLoading } = useUser();
-  if (isLoading) return <div>Loading...</div>;
   if (error) return <div>{error.message}</div>;
+  
+  
 
   return (
-    <div>
+    <div className="h-screen flex items-center justify-center">
       {user ? (
-        <div>
-          <h2>{user.name}</h2>
-          <p>{user.sub}</p>
-          <a href="/api/auth/logout">Logout</a>
-        </div>
+        <Box height="h-[12rem]">
+          <Profile user={user}/>
+        </Box>
       ) : (
-        <a href="/api/auth/login">Login</a>
+        
+          <Box height="h-[10rem]">
+            <h1 className="text-xl font-bold">
+              Login to my app
+            </h1>
+            <Button
+              label={isLoading ? "Loading..." : "Login"}
+              redirect="/api/auth/login"
+              disabled={isLoading}
+            />
+          </Box>
+        
       )}
     </div>
   );

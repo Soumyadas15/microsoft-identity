@@ -1,3 +1,10 @@
+/**
+ * Button component
+ * @param label - button text
+ * @param redirect - route to redirect to
+ * @param disabled - whether the button is disabled or not
+*/
+
 import { useRouter } from "next/navigation";
 
 interface ButtonProps {
@@ -24,15 +31,7 @@ export const Button = ({
         <button
             onClick={handleClick}
             disabled={disabled}
-            className={`
-                p-2
-                bg-indigo-600 
-                rounded-lg 
-                w-full
-                flex 
-                items-center 
-                justify-center
-                text-white
+            className={`p-2 bg-indigo-600  rounded-lg  w-full flex    items-center  justify-center  text-white
                 ${disabled ? "opacity-75 cursor-not-allowed" : "opacity-100 hover:opacity-90 hover:cursor-pointer"}
             `}
         >

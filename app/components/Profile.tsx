@@ -1,3 +1,8 @@
+/**
+ * Renders the profile page for the given user.
+ * @param user the user object
+*/
+
 import Image from "next/image";
 import { Button } from "./Button";
 
